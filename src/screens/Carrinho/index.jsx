@@ -19,9 +19,8 @@ export default function Carrinho(props) {
   return (
     <ContainerCarrinho>
       <section>
-        <h1>Carrinho</h1>
-        <h3>Total = {total.toFixed(2).replace(".", ",")}</h3>
-        {/* <hr /> */}
+        <h3>Carrinho</h3>
+        <hr />
         {carrinho.map((produto) => (
           <CardProduto
             produto={produto}
@@ -32,6 +31,8 @@ export default function Carrinho(props) {
             deletaDoCarrinho={deletaDoCarrinho}
           />
         ))}
+        <hr />
+        <h3>Total = R$ {total.toFixed(2).replace(".", ",")}</h3>
       </section>
     </ContainerCarrinho>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import Header from "./components/Header/Header";
 import Carrinho from "./screens/Carrinho";
 import Home from "./screens/Home";
@@ -27,8 +28,8 @@ function App() {
       const novoProduto = {
         ...produtoAADicionar,
         quantidade: 1,
-      }
-      novoCarrinho.push(novoProduto)
+      };
+      novoCarrinho.push(novoProduto);
     } else {
       produtoAchado.quantidade++;
     }
@@ -83,7 +84,6 @@ function App() {
     setFiltroOrdem("");
   };
 
-
   const renderizaTela = () => {
     switch (telaAtiva) {
       case "Home":
@@ -96,20 +96,22 @@ function App() {
         );
       case "Carrinho":
         return (
-          <Carrinho
-            carrinho={carrinho}
-            adicionaQuantidadeNoCarrinho={adicionaQuantidadeNoCarrinho}
-            diminuiQuantidadeNoCarrinho={diminuiQuantidadeNoCarrinho}
-            deletaDoCarrinho={deletaDoCarrinho}
-          />
-        )
+          <Background>
+            <Carrinho
+              carrinho={carrinho}
+              adicionaQuantidadeNoCarrinho={adicionaQuantidadeNoCarrinho}
+              diminuiQuantidadeNoCarrinho={diminuiQuantidadeNoCarrinho}
+              deletaDoCarrinho={deletaDoCarrinho}
+            />
+          </Background>
+        );
       default:
-        return <div>Tela não existe</div>
+        return <div>Tela não existe</div>;
     }
   };
 
   return (
-    <div>
+    <Background className="background-image">
       <Header
         irParaTelaHome={irParaTelaHome}
         irParaTelaCarrinho={irParaTelaCarrinho}
@@ -121,8 +123,19 @@ function App() {
         atualizaFiltroOrdem={atualizaFiltroOrdem}
       />
       {renderizaTela()}
-    </div>
+    </Background>
   );
 }
 
 export default App;
+
+export const Background = styled.div`
+  .background-image {
+    background-image: url("./assets/background.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;

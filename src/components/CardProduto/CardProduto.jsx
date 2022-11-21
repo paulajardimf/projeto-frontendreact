@@ -10,42 +10,46 @@ export default function CardProduto(props) {
     diminuiQuantidadeNoCarrinho,
     deletaDoCarrinho,
   } = props;
-  
 
   return (
     <CardProdutoStyled>
       <img src={produto.imagem} alt={produto.imagemAlt} />
-      <h3>{produto.nome}</h3>
-      <h3>
-        R$ {produto.preco.toFixed(2).replace(".", ",")}
-      </h3>
-      {
-        estaNaTelaCarrinho && produto.quantidade > 1 && 
-        <button 
-          onClick={() => diminuiQuantidadeNoCarrinho(produto)}>
-          -
-        </button>
-      }{
-        estaNaTelaCarrinho && 
-        <button
-          onClick={() => adicionaQuantidadeNoCarrinho(produto)}
-        >
-          +
-        </button>
-      }{
-        estaNaTelaHome && 
-        <button
-          onClick={() => adicionaAoCarrinho(produto)}>
-            Adiciona no carrinho
+      <div className="container-info">
+        <h3>{produto.nome}</h3>
+        <h3>R$ {produto.preco.toFixed(2).replace(".", ",")}</h3>
+      </div>
+      <div className="buttons">
+        {estaNaTelaCarrinho && produto.quantidade > 1 && (
+          <button
+            className="button-quant"
+            onClick={() => diminuiQuantidadeNoCarrinho(produto)}
+          >
+            -
           </button>
-      }{
-        estaNaTelaCarrinho && <span>Quant: {produto.quantidade}</span>
-      }{
-        estaNaTelaCarrinho && 
-        <button onClick={() => deletaDoCarrinho(produto)}>
-          Deleta do Carrinho
-        </button>
-      }
+        )}
+        {estaNaTelaCarrinho && (
+          <button
+            className="button-quant"
+            onClick={() => adicionaQuantidadeNoCarrinho(produto)}
+          >
+            +
+          </button>
+        )}
+        {estaNaTelaHome && (
+          <button
+            className="button-add"
+            onClick={() => adicionaAoCarrinho(produto)}
+          >
+            Comprar
+          </button>
+        )}
+        {estaNaTelaCarrinho && <span>Quant: {produto.quantidade}</span>}
+        {estaNaTelaCarrinho && (
+          <button className="button-delete" onClick={() => deletaDoCarrinho(produto)}>
+            Excluir
+          </button>
+        )}
+      </div>
     </CardProdutoStyled>
-  )
+  );
 }
