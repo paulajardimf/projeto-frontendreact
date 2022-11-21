@@ -2,28 +2,22 @@
   {
     "id": "001",
     "nome": "Produto1",
-    "tamanho": ["PP", "P", "M", "G", "GG", "XG", "XXG"],
     "preco": 10.5,
-    "imagem": "",
-    "imagemAlt": "",
-    "quantidade": 1
+    "imagem": "https://picsum.photos/200/300",
+    "imagemAlt": ""
   },
   {
     "id": "002",
     "nome": "Produto2",
-    "tamanho": ["PP", "P", "M", "G", "GG", "XG", "XXG"],
     "preco": 22.5,
-    "imagem": "",
-    "imagemAlt": "",
-    "quantidade": 1
+    "imagem": "https://picsum.photos/200/300",
+    "imagemAlt": ""
   },
   {
     "id": "003",
     "nome": "Produto3",
-    "tamanho": ["PP", "P", "M", "G", "GG", "XG", "XXG"],
     "preco": 25,
-    "imagem": "",
-    "imagemAlt": "",
-    "quantidade": 1
+    "imagem": "https://picsum.photos/200/300",
+    "imagemAlt": ""
   }
 ]

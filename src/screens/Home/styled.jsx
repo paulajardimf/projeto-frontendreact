@@ -7,11 +7,7 @@ export const HomeStyled = styled.main`
     border: 1px solid red;
     display: flex;
   }
-  .card-produto {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-  }
+
 `;
 
 
