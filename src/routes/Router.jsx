@@ -9,8 +9,8 @@ export default function Router() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/carrinho" element={<CartPage />} />
+        <Route index element={<HomePage/>}/>
+        <Route path="/carrinho" element={<CartPage/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
