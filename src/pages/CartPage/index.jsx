@@ -28,7 +28,6 @@ export default function CartPage() {
               <h3>Total = R$ {total.toFixed(2).replace(".", ",")}</h3>
               <p> ou até 4x sem juros de R$ {(total / 4).toFixed(2).replace(".",",")}</p>
             </section>
-            <button>Fechar pedido</button>
           </section>
         )}
         {carrinho.length === 0 && <h2>Carrinho vazio</h2>}
