@@ -1,0 +1,51 @@
+[
+  {
+    "id": "001",
+    "name": "Astrodev Maneiro",
+    "value": 24.9,
+    "image": "https://i.imgur.com/THmpwi8.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, fazendo uma posição maneira"
+  },
+  {
+    "id": "002",
+    "name": "Astrodev De Boa na Lua",
+    "value": 29.5,
+    "image": "https://i.imgur.com/3eGlwrS.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, sentado em uma lua crescente"
+  },
+  {
+    "id": "003",
+    "name": "Astrodev Escalando a Lua",
+    "value": 22.8,
+    "image": "https://i.imgur.com/RjVbbGa.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, escalando a lua"
+  },
+  {
+    "id": "004",
+    "name": "Astrodev Saudando",
+    "value": 27.5,
+    "image": "https://i.imgur.com/ymzzm3Z.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, escalando a lua"
+  },
+  {
+    "id": "005",
+    "name": "Astrodev Apaixonado",
+    "value": 20.5,
+    "image": "https://i.imgur.com/S55FbO6.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, segurando um coração"
+  },
+  {
+    "id": "006",
+    "name": "Astrodev Na Lua",
+    "value": 28.00,
+    "image": "https://i.imgur.com/QhgOvcI.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, em cima da lua"
+  },
+  {
+    "id": "007",
+    "name": "Astrodev Super Herói",
+    "value": 32.00,
+    "image": "https://i.imgur.com/pEIAUT1.png",
+    "imageAlt": "boneco astronauta na cor branco, com detalhes e visor em dourado, com uma capa vermelha e levantando um braço"
+  }
+]
