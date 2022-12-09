@@ -26,7 +26,7 @@ export const CardProductStyled = styled.section`
       font-weight: 500;
       font-size: 1.5rem;
     }
-    h4{
+    h4 {
       font-weight: 400;
       font-size: 1.5rem;
       margin-top: 5px;
@@ -42,5 +42,15 @@ export const CardProductStyled = styled.section`
     width: 210px;
     font-size: 1.5rem;
     color: white;
+    img {
+      width: 30px;
+    }
+  }
+  button:hover,
+  button:active {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   }
 `;

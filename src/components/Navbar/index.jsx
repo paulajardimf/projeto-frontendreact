@@ -4,6 +4,7 @@ import { NavbarStyled } from "./styled";
 import logo from "../../assets/logo.svg";
 import cart from "../../assets/icon-cart.svg";
 import home from "../../assets/icon-home.svg";
+import search from "../../assets/icon-search.svg";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
@@ -20,6 +21,7 @@ export default function Navbar() {
           <img className="logo" src={logo} alt="logo Astro Dev" />
         </a>
         <div className="input">
+          <img src={search} alt="" />
           <input
             type="text"
             placeholder="Buscar produto"

@@ -21,5 +21,11 @@ export const FooterStyled = styled.footer`
         height: 30px;
       }
     }
+    a:hover {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+      transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    }
   }
 `;

@@ -43,12 +43,23 @@ export const CardCartStyled = styled.main`
         cursor: pointer;
         align-items: center;
       }
+      button:hover {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-transition-timing-function: cubic-bezier(
+          0.47,
+          2.02,
+          0.31,
+          -0.36
+        );
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+      }
     }
   }
 
   .button-quant {
     border: none;
-    background-color: #6a81f4;
+    background-color: #131313;
     color: white;
     border-radius: 10px;
     width: 20px;
@@ -66,6 +77,17 @@ export const CardCartStyled = styled.main`
     gap: 30px;
     .button-delete {
       width: 30px;
+    }
+    .button-delete:hover{
+      -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-transition-timing-function: cubic-bezier(
+          0.47,
+          2.02,
+          0.31,
+          -0.36
+        );
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
     }
   }
 

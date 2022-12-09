@@ -18,15 +18,18 @@ export const NavbarStyled = styled.div`
     display: flex;
     justify-content: center;
     background-color: white;
-    width: 350px;
+    width: 550px;
     height: 38px;
     border-radius: 40px;
     box-shadow: 6px 6px 50px 0px #37373740;
-
+    img{
+      width: 25px;
+    }
     input {
-      width: 310px;
+      width: 500px;
       height: 38px;
       border: none;
+      padding: 0 5px;
     }
     input:focus {
       outline: none;
@@ -38,7 +41,7 @@ export const NavbarStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 40px;
+    margin-right: 55px;
 
     button {
       height: 55px;
@@ -54,9 +57,16 @@ export const NavbarStyled = styled.div`
         padding-top: 5px;
       }
 
-      span{
+      span {
         color: white;
+        font-size: 1.5rem;
       }
+    }
+    button:hover {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+      transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
     }
   }
 `;
