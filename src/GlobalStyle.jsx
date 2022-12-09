@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components"
-
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle` 
     * {
@@ -9,15 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
     }
 
-    body{
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-
-`
+`;

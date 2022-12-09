@@ -1,40 +1,39 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import Header from "./components/Header/Header";
-import Carrinho from "./screens/Carrinho";
-import Home from "./screens/Home";
+import Router from "./routes/Router";
+import { useEffect, useState } from "react";
+import { GlobalStyle } from "./GlobalStyle";
+import { GlobalContext } from "./contexts/GlobalContext";
+import products from "./assets/products.json";
 
-function App() {
-  const [telaAtiva, setTelaAtiva] = useState("Home");
+export default function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [filtroTexto, setFiltroTexto] = useState("");
   const [filtroOrdem, setFiltroOrdem] = useState("");
+  const [quantidade, setQuantidade] = useState(0);
+  const [valorMin, setValorMin] = useState("");
+  const [valorMax, setValorMax] = useState("");
 
-  const irParaTelaHome = () => {
-    setTelaAtiva("Home");
-  };
-  const irParaTelaCarrinho = () => {
-    setTelaAtiva("Carrinho");
-  };
-
-  const adicionaAoCarrinho = (produtoAADicionar) => {
+  const adicionaAoCarrinho = (produtoAAdicionar) => {
     const novoCarrinho = [...carrinho];
 
     const produtoAchado = novoCarrinho.find(
-      (produtoNoCarrinho) => produtoNoCarrinho.id === produtoAADicionar.id
+      (produtoNoCarrinho) => produtoNoCarrinho.id === produtoAAdicionar.id
     );
 
     if (!produtoAchado) {
       const novoProduto = {
-        ...produtoAADicionar,
+        ...produtoAAdicionar,
         quantidade: 1,
       };
+      setQuantidade(quantidade + 1);
       novoCarrinho.push(novoProduto);
     } else {
+      setQuantidade(quantidade + 1);
       produtoAchado.quantidade++;
     }
 
     setCarrinho(novoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    localStorage.setItem("quantidade", JSON.stringify(quantidade));
   };
 
   const adicionaQuantidadeNoCarrinho = (produtoASomar) => {
@@ -45,19 +44,24 @@ function App() {
 
     produtoAchado.quantidade++;
 
+    setQuantidade(quantidade + 1);
     setCarrinho(novoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    localStorage.setItem("quantidade", JSON.stringify(quantidade));
   };
 
   const diminuiQuantidadeNoCarrinho = (produtoADiminuir) => {
     const novoCarrinho = [...carrinho];
-
     const produtoAchado = novoCarrinho.find(
       (produtoNoCarrinho) => produtoNoCarrinho.id === produtoADiminuir.id
     );
 
     produtoAchado.quantidade--;
 
+    setQuantidade(quantidade - 1);
     setCarrinho(novoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    localStorage.setItem("quantidade", JSON.stringify(quantidade));
   };
 
   const deletaDoCarrinho = (produtoADeletar) => {
@@ -66,9 +70,11 @@ function App() {
     const indexAchado = novoCarrinho.findIndex(
       (produtoNoCarrinho) => produtoNoCarrinho.id === produtoADeletar.id
     );
-
+    setQuantidade(quantidade - carrinho[indexAchado].quantidade);
     novoCarrinho.splice(indexAchado, 1);
     setCarrinho(novoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    localStorage.setItem("quantidade", JSON.stringify(quantidade - 1));
   };
 
   const atualizaFiltroTexto = (e) => {
@@ -79,63 +85,74 @@ function App() {
     setFiltroOrdem(e.target.value);
   };
 
+  const atualizaValorMin = (e) => {
+    setValorMin(e.target.value);
+  };
+
+  const atualizaValorMax = (e) => {
+    setValorMax(e.target.value);
+  };
+
   const limpaPesquisa = () => {
     setFiltroTexto("");
     setFiltroOrdem("");
+    setValorMin("");
+    setValorMax("");
   };
 
-  const renderizaTela = () => {
-    switch (telaAtiva) {
-      case "Home":
-        return (
-          <Home
-            adicionaAoCarrinho={adicionaAoCarrinho}
-            filtroTexto={filtroTexto}
-            filtroOrdem={filtroOrdem}
-          />
-        );
-      case "Carrinho":
-        return (
-          <Background>
-            <Carrinho
-              carrinho={carrinho}
-              adicionaQuantidadeNoCarrinho={adicionaQuantidadeNoCarrinho}
-              diminuiQuantidadeNoCarrinho={diminuiQuantidadeNoCarrinho}
-              deletaDoCarrinho={deletaDoCarrinho}
-            />
-          </Background>
-        );
-      default:
-        return <div>Tela não existe</div>;
+  useEffect(() => {
+    if (carrinho.length > 0) {
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
     }
+  }, [carrinho]);
+
+  useEffect(() => {
+    const listaJson = JSON.parse(localStorage.getItem("carrinho"));
+    if (listaJson) {
+      setCarrinho(listaJson);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (quantidade > 0) {
+      localStorage.setItem("quantidade", JSON.stringify(quantidade));
+    }
+  }, [quantidade]);
+
+  useEffect(() => {
+    const listaJson = JSON.parse(localStorage.getItem("quantidade"));
+    if (listaJson) {
+      setQuantidade(listaJson);
+    }
+  }, []);
+
+  // organização do contexto
+  const context = {
+    carrinho,
+    setCarrinho,
+    adicionaAoCarrinho,
+    adicionaQuantidadeNoCarrinho,
+    diminuiQuantidadeNoCarrinho,
+    deletaDoCarrinho,
+    filtroTexto,
+    filtroOrdem,
+    atualizaFiltroTexto,
+    atualizaFiltroOrdem,
+    limpaPesquisa,
+    products,
+    quantidade,
+    valorMin,
+    valorMax,
+    atualizaValorMin,
+    atualizaValorMax,
   };
 
   return (
-    <Background className="background-image">
-      <Header
-        irParaTelaHome={irParaTelaHome}
-        irParaTelaCarrinho={irParaTelaCarrinho}
-        itensNoCarrinho={carrinho.length}
-        filtroTexto={filtroTexto}
-        filtroOrdem={filtroOrdem}
-        limpaPesquisa={limpaPesquisa}
-        atualizaFiltroTexto={atualizaFiltroTexto}
-        atualizaFiltroOrdem={atualizaFiltroOrdem}
-      />
-      {renderizaTela()}
-    </Background>
+    <>
+      <GlobalContext.Provider value={context}>
+        <GlobalStyle />
+        <Router />
+      </GlobalContext.Provider>
+    </>
   );
 }
-
-export default App;
-
-export const Background = styled.div`
-  .background-image {
-    background-image: url("./assets/background.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`;
