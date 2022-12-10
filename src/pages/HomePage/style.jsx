@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const HomePageStyled = styled.main`
-  height: 100%;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 120px);
-
+  width: 100%;
+  
   .container-banner {
     display: flex;
     align-items: center;

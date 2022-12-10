@@ -3,7 +3,6 @@ import { HomePageStyled } from "./style";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import CardProduct from "../../components/CardProduct";
 import gifBackground from "../../assets/background.gif";
-import astrodev from "../../assets/astro01.png";
 
 export default function HomePage() {
   const context = useContext(GlobalContext);
